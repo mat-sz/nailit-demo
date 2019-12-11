@@ -30,13 +30,15 @@ function App() {
         }
     }, [ fileURL, maxSize, cover ]);
 
+    const onDrop = acceptedFiles => setFile(acceptedFiles[0]);
+
     return (
         <div className="app">
             <header>
                 <h1>nailit demo</h1>
                 <span>Generate thumbnails on the fly within the browser. <a href="https://github.com/mat-sz/nailit/">GitHub project.</a></span>
             </header>
-            <Dropzone onDrop={acceptedFiles => setFile(acceptedFiles[0])}>
+            <Dropzone onDrop={onDrop}>
                 {({ getRootProps, getInputProps }) => (
                 <section>
                     <div {...getRootProps()} className="dropzone">
@@ -76,7 +78,7 @@ function App() {
             </section>
             <section className="output">
                 <h2>Output:</h2>
-                {thumbnailURL ? 
+                { thumbnailURL ? 
                     <img className="output__image"
                         src={thumbnailURL}
                         alt="The thumbnail generated with nailit." />
