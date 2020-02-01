@@ -26,7 +26,10 @@ function App() {
 
     useEffect(() => {
         if (fileURL) {
-            nailIt(fileURL, maxSize, cover).then((url) => setThumbnailURL(url));
+            nailIt(fileURL, {
+                maxSize,
+                cover,
+            }).then((url) => setThumbnailURL(url));
         }
     }, [ fileURL, maxSize, cover ]);
 
